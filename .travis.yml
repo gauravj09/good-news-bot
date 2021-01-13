@@ -2,7 +2,7 @@ language: python
 before_install:
 - python -m pip install --upgrade pip
 install:
-- pip install --user -r requirements.txt --use-feature=2020-resolver
+- pip install -r requirements.txt --use-feature=2020-resolver
 script:
 - src/newsbot.py
 env:
