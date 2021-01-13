@@ -23,23 +23,22 @@ def send_news_to_twitter():
 # Use the Google NLP API to fetch the good news of the day
 def good_news_of_the_day(headlines):
     minimum_score = 0
-    publish_url = ""
     good_news = "Come back sometime later for a good news. So far it has all been sad news :( "
 
     for headline in headlines:
-        headline_analysis = sentiment(headline)
+        headline_score = sentiment(headline)
 
-        if headline_analysis > minimum_score:
+        if headline_score > minimum_score:
             good_news = headline
-            minimum_score = headline_analysis
+            minimum_score = headline_score
 
-    return good_news + publish_url
+    return good_news
 
 
 # Analyze the sentiment of a headline
 def sentiment(headline):
-    analyzer = google_nlp_config.SentimentAnalyzer()
-    return analyzer.sentiment_result(headline)
+    sentiment_analyzer = google_nlp_config.SentimentAnalyzer()
+    return sentiment_analyzer.sentiment_result(headline)
 
 
 send_news_to_twitter()
