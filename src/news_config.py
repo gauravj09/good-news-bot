@@ -10,11 +10,11 @@ class NewsAPIConfiguration:
     def get_api(self):
         return NewsApiClient(api_key=self.__news_api_key)
 
-    def news_headlines(self):
-        list_of_headlines = []
+    def headlines_with_urls(self):
+        headline_urls = {}
         headlines = self.__news.get_top_headlines()
 
         for article in headlines['articles']:
-            list_of_headlines.append(article['title'])
+            headline_urls[article['title']] = article['url']
 
-        return list_of_headlines
+        return headline_urls
